@@ -14,7 +14,7 @@ class ExpoAutostartModule : Module() {
     Name("ExpoAutostart")
 
     // You can add any additional methods to interact with the BootReceiver
-    function("initializeBootReceiver") {
+    Function("initializeBootReceiver") {
         // This could be used to configure or initialize the receiver if necessary
     }
   }

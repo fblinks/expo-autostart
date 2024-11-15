@@ -1,8 +1,6 @@
 {
-  "platforms": ["ios", "tvos", "android", "web"],
-  "ios": {
-    "modules": ["ExpoAutostartModule"]
-  },
+  "name": "expo-autostart",
+  "platforms": ["android"],
   "android": {
     "modules": ["expo.modules.autostart.ExpoAutostartModule"]
   }

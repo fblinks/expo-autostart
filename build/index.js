@@ -1,5 +1,4 @@
-// Import the native module. On web, it will be resolved to ExpoAutostart.web.ts
-// and on native platforms to ExpoAutostart.ts
+// Android only — see expo-module.config.json. Importing this module on other platforms throws.
 import ExpoAutostartModule from './ExpoAutostartModule';
 /**
  * @deprecated No-op retained for backward compatibility.

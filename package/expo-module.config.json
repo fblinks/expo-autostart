@@ -1,6 +1,0 @@
-{
-  "platforms": ["android"],
-  "android": {
-    "modules": ["<%- project.package %>.<%- project.moduleName %>"]
-  }
-}

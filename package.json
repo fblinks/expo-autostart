@@ -28,11 +28,10 @@
   "author": "Fabrizio Bertone <fabrizio.bertone@linksfoundation.com> (https://github.com/fblinks)",
   "license": "MIT",
   "homepage": "https://github.com/fblinks/expo-autostart#readme",
-  "dependencies": {},
   "devDependencies": {
     "@types/react": "^18.0.25",
-    "expo-module-scripts": "^3.5.2",
-    "expo-modules-core": "^1.12.24"
+    "expo-module-scripts": "^56.0.3",
+    "expo-modules-core": "^57.0.11"
   },
   "peerDependencies": {
     "expo": "*",

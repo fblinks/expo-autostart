@@ -25,7 +25,8 @@ class ExpoAutostartModule : Module() {
 
     Function("isAutostartEnabled") {
       val state = context.packageManager.getComponentEnabledSetting(bootReceiverComponentName)
-      state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+      state == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT ||
+        state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
     }
 
     AsyncFunction("setAutostartEnabled") { enabled: Boolean ->

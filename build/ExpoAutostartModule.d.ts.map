@@ -1,1 +1,1 @@
-{"version":3,"file":"ExpoAutostartModule.d.ts","sourceRoot":"","sources":["../src/ExpoAutostartModule.ts"],"names":[],"mappings":";AAIA,wBAAoD"}
+{"version":3,"file":"ExpoAutostartModule.d.ts","sourceRoot":"","sources":["../src/ExpoAutostartModule.ts"],"names":[],"mappings":"AAIA,MAAM,WAAW,uBAAuB;IACtC,sBAAsB,IAAI,IAAI,CAAC;IAC/B,kBAAkB,IAAI,OAAO,CAAC;IAC9B,mBAAmB,CAAC,OAAO,EAAE,OAAO,GAAG,OAAO,CAAC,IAAI,CAAC,CAAC;CACtD;;AAED,wBAA6E"}

@@ -1,21 +1,44 @@
 package expo.modules.autostart
 
+import android.content.ComponentName
+import android.content.Context
+import android.content.pm.PackageManager
+import expo.modules.kotlin.exception.Exceptions
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
 class ExpoAutostartModule : Module() {
-  // Each module class must implement the definition function. The definition consists of components
-  // that describes the module's functionality and behavior.
-  // See https://docs.expo.dev/modules/module-api for more details about available components.
+  private val context: Context
+    get() = appContext.reactContext ?: throw Exceptions.ReactContextLost()
+
+  private val bootReceiverComponentName: ComponentName
+    get() = ComponentName(context, BootReceiver::class.java)
+
   override fun definition() = ModuleDefinition {
-    // Sets the name of the module that JavaScript code will use to refer to the module. Takes a string as an argument.
-    // Can be inferred from module's class name, but it's recommended to set it explicitly for clarity.
-    // The module will be accessible from `requireNativeModule('ExpoAutostart')` in JavaScript.
     Name("ExpoAutostart")
 
-    // You can add any additional methods to interact with the BootReceiver
+    // Deprecated no-op retained for backward compatibility.
+    // Use `setAutostartEnabled` / `isAutostartEnabled` instead.
     Function("initializeBootReceiver") {
-        // This could be used to configure or initialize the receiver if necessary
+      // no-op
+    }
+
+    Function("isAutostartEnabled") {
+      val state = context.packageManager.getComponentEnabledSetting(bootReceiverComponentName)
+      state != PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+    }
+
+    AsyncFunction("setAutostartEnabled") { enabled: Boolean ->
+      val newState = if (enabled) {
+        PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+      } else {
+        PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+      }
+      context.packageManager.setComponentEnabledSetting(
+        bootReceiverComponentName,
+        newState,
+        PackageManager.DONT_KILL_APP
+      )
     }
   }
 }

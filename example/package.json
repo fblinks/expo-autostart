@@ -1,7 +1,7 @@
 {
   "name": "example",
   "version": "1.0.0",
-  "main": "babel.config.js",
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "android": "expo run:android",
@@ -11,8 +11,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "expo": "~52.0.0-preview.23",
-    "react": "18.3.1",
-    "react-native": "0.76.1"
+    "expo": "^57.0.14",
+    "expo-autostart": "../",
+    "react": "19.2.3",
+    "react-native": "0.86.2"
   }
 }

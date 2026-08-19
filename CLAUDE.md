@@ -46,3 +46,6 @@ npx eslint src example/App.tsx --ext .ts,.tsx
 
 - The compiled `build/` directory is committed to git rather than gitignored (the `.gitignore` rule for it is present but commented out, under the "Xcode" section where it doesn't belong). Keep `build/` in sync with `src/` manually via `npm run build` before committing source changes.
 - `expo-module.config.json` duplicates the module name already in `package.json` (`"name": "expo-autostart"` in both) — a second source of truth if the package is ever renamed.
+
+
+`"prepare": "expo-module build"` in `package.json` is deliberately **not** `"expo-module prepare"` — don't "fix" this to look consistent with the other scripts. This package is consumed via a git URL dependency (not the npm registry), and `build/` is gitignored/never committed, so `prepare` (the only lifecycle hook npm runs automatically for a git-sourced dependency) must actually produce `build/index.js` itself. `expo-module-scripts`'s own bundled `prepare` binary can't be relied on for this: older versions ship it as a bash script (`set -eo pipefail`) that crashes on Windows when Node's loader tries to parse it as JS instead of executing it through a shell, and the current version (`^56`) turned it into a pure no-op that would silently skip building entirely, shipping a broken module.

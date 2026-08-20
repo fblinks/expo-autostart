@@ -10,4 +10,6 @@
 
 ### 🐛 Bug fixes
 
+- Fix `npm install` of this package as a git dependency failing entirely during `prepare`: `typescript` was never declared as a dependency, so `npx tsc` could resolve an unrelated abandoned `tsc` package from the registry instead of the TypeScript compiler when `typescript` wasn't incidentally hoisted from a sub-dependency. Added `typescript` as an explicit devDependency.
+
 ### 💡 Others
